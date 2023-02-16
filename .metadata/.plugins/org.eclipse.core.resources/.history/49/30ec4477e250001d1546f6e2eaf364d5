@@ -1,0 +1,60 @@
+package _20221021;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextPane;
+
+public class SmallEditer extends JFrame implements ActionListener {
+
+	JPanel menuPanel, textPanel;
+	JButton edit, copy, cut, stick, exit;
+	JTextPane text;
+	
+	SmallEditer() {
+		menuPanel = new JPanel();
+		textPanel = new JPanel();
+		
+		menuPanel.setLayout(new GridLayout(0,5));
+		
+		edit = new JButton("편집");
+		copy = new JButton("복사");
+		cut = new JButton("잘라내기");
+		stick = new JButton("붙이기");
+		exit = new JButton("종료");
+		
+		edit.addActionListener(this);
+		
+		menuPanel.add(edit);
+		menuPanel.add(copy);
+		menuPanel.add(cut);
+		menuPanel.add(stick);
+		menuPanel.add(exit);
+		
+		
+		add(menuPanel,BorderLayout.NORTH);
+		
+		text = new JTextPane();
+		text.setToolTipText("편집버튼 클릭하세요.");
+		//text.setEditable(true);
+		//text.requestFocus();
+		add(text);
+		
+		setSize(600,600);
+		setVisible(true);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+	}
+	public static void main(String[] args) {
+		new SmallEditer();
+	}
+}

@@ -1,0 +1,96 @@
+package cardGame;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+/*
+ * 1. 카드 객체를 생성하고 모양, 숫자 변수를 선언한다.
+ * 2. 변수에 값을 저장한다.
+ * 3. 값은 랜덤을 이용한다.
+ */
+
+class Card {
+	int num;
+	String shape;
+	char c;
+	
+	public char getC() {
+		return c;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		switch (num) {
+		case 11:
+			c = 'J';
+			break;
+		case 12:
+			c = 'Q';
+			break;
+		case 13:
+			c = 'K';
+			break;
+		case 14:
+			c = 'A';
+			break;
+		default:
+			break;
+		}
+		
+		this.num = num;
+	}
+	public String getShape() {
+		return shape;
+	}
+	public void setShape(int shape) {
+		switch (shape) {
+		case 1:
+			this.shape = "스페이드";
+			break;
+		case 2:
+			this.shape = "다이아몬드";
+			break;
+		case 3:
+			this.shape = "하트";
+			break;
+		case 4:
+			this.shape = "클로버";
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+public class CardGame {
+	
+	public static void main(String[] args) {
+		Random random = new Random();
+		ArrayList<Card> cards = new ArrayList<Card>();
+		
+		for (int i = 0; i < 50; i++) {
+			int ranNum = random.nextInt(13)+2;
+			int ranShape = random.nextInt(4)+1;
+			
+			Card card = new Card();
+			card.setNum(ranNum);
+			card.setShape(ranShape);
+			
+			for (Card card2 : cards) {
+				while (card2.getNum() == card.getNum() && card2.getShape() == card.getShape()) {
+					ranNum = random.nextInt(13)+2;
+					ranShape = random.nextInt(4)+1;
+					card.setNum(ranNum);
+					card.setShape(ranShape);
+				}
+			}
+			cards.add(card);
+			
+			if (cards.get(i).getNum() > 10)
+				System.out.println(cards.get(i).getShape() + " " + cards.get(i).getC());
+			else
+				System.out.println(cards.get(i).getShape() + " " + cards.get(i).getNum());
+		}
+	}
+}

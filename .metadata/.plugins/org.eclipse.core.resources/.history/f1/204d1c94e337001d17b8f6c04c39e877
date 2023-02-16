@@ -1,0 +1,20 @@
+package _20220919;
+
+import java.awt.image.BufferedImage;
+
+import javax.swing.JFrame;
+
+public class GrayScaleImage extends JFrame {
+
+	BufferedImage image;
+	int width;
+	int height;
+	
+	public GrayScaleImage() {
+		
+	}
+	public static void main(String[] args) {
+
+	}
+
+}

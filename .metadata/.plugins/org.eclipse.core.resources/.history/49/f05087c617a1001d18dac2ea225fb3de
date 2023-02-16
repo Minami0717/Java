@@ -1,0 +1,25 @@
+import java.time.LocalTime;
+
+public class PrimeNumber {
+
+	public static void main(String[] args) {
+		int prime = 2;
+		boolean isPrime = true;
+		System.out.println("시간 : " + LocalTime.now());
+		for (int i = 100000; i < 200000; i++) {
+			for (int j = 2; j < i; j++) {
+				if (i % j == 0) {
+					isPrime = false;
+					break;
+				}
+				else {
+					isPrime = true;
+					prime = i;
+				}
+			}
+			if (isPrime)
+				System.out.print(prime+" ");
+		}
+		System.out.println("\n시간 : " + LocalTime.now());
+	}
+}

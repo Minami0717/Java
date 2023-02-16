@@ -1,0 +1,124 @@
+package cardGame;
+
+import java.awt.image.Raster;
+import java.util.ArrayList;
+import java.util.Random;
+
+/*
+ * 1. 카드 객체를 생성하고 모양, 숫자 변수를 선언한다.
+ * 2. 변수에 값을 저장한다.
+ * 3. 값은 랜덤을 이용한다.
+ */
+
+class Card {
+	int num;
+	int shape;
+	char c;
+	String result;
+	
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
+	public char getC() {
+		return c;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		switch (num) {
+		case 11:
+			c = 'J';
+			break;
+		case 12:
+			c = 'Q';
+			break;
+		case 13:
+			c = 'K';
+			break;
+		case 14:
+			c = 'A';
+			break;
+		default:
+			break;
+		}
+		
+		this.num = num;
+	}
+	public int getShape() {
+		return shape;
+	}
+	public void setShape(int shape) {
+		this.shape = shape;
+	}
+}
+
+public class CardGame {
+	
+	public static void main(String[] args) {
+		Random random = new Random();
+		String shapes[] = {"♠","◆","♥","♣"};
+		ArrayList<Card> playerCards = new ArrayList<Card>();
+		ArrayList<Card> comCards = new ArrayList<Card>();
+		
+		System.out.print("Player : ");
+		
+		for (int i = 0; i < 5; i++) {
+			int ranNum = random.nextInt(13)+2;
+			int ranShape = random.nextInt(4);
+			
+			for (Card card : playerCards) {
+				while (card.getNum() == ranNum && card.getShape() == ranShape) {
+					ranNum = random.nextInt(13)+2;
+					ranShape = random.nextInt(4);
+				}
+			}
+			
+			Card playerCard = new Card();
+			playerCard.setNum(ranNum);
+			playerCard.setShape(ranShape);
+			playerCards.add(playerCard);
+			
+			if (playerCards.get(i).getNum() > 10)
+				System.out.print(playerCards.get(i).getC()+shapes[playerCards.get(i).getShape()]+" ");
+			else
+				System.out.print(playerCards.get(i).getNum()+shapes[playerCards.get(i).getShape()]+" ");
+			
+			for (Card card1 : playerCards) {
+				for (Card card2 : playerCards) {
+					if (card1.getNum() == card2.getNum()) {
+						
+					}
+				}
+			}
+		}
+		
+		System.out.print("\nCom : ");
+		
+		for (int i = 0; i < 5; i++) {
+			int ranNum = random.nextInt(13)+2;
+			int ranShape = random.nextInt(4);
+			
+			for (Card card : comCards) {
+				while (card.getNum() == ranNum && card.getShape() == ranShape) {
+					ranNum = random.nextInt(13)+2;
+					ranShape = random.nextInt(4);
+				}
+			}
+			
+			Card comCard = new Card();
+			comCard.setNum(ranNum);
+			comCard.setShape(ranShape);
+			comCards.add(comCard);
+			
+			if (comCards.get(i).getNum() > 10)
+				System.out.print(comCards.get(i).getC()+shapes[comCards.get(i).getShape()]+" ");
+			else
+				System.out.print(comCards.get(i).getNum()+shapes[comCards.get(i).getShape()]+" ");
+			
+		}
+	}
+}

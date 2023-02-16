@@ -1,0 +1,19 @@
+
+public class PrimeNumber {
+
+	public static void main(String[] args) {
+		int prime = 2;
+		for (int i = 2; i < 100; i++) {
+			for (int j = 2; j <= i; j++) {
+				if ((j != i) && i % j == 0) {
+					continue;
+				}
+				else {
+					prime = i;
+				}
+			}
+			System.out.println(prime);
+		}
+	}
+
+}

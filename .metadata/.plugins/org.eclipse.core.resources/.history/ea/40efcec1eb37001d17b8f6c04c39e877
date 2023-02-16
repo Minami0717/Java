@@ -1,0 +1,26 @@
+package _20220919;
+
+import java.util.Scanner;
+
+public class Calendar {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("1. 연도를 입력하세요[종료는 0 입력] >> ");
+		int year = scanner.nextInt();
+		
+		System.out.println("2. 월을 입력하세요(예 : 6) >> ");
+		int month = scanner.nextInt();
+		
+		int sum = 0;
+		for (int i = 1; i < 2022; i++) {
+			if (((i % 4 == 0 && i % 100 != 0) || i % 400 == 0))
+				sum += 366;
+			else
+				sum += 365;
+		}
+		System.out.println(sum);
+	}
+
+}

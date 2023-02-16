@@ -1,0 +1,9 @@
+package _20220919;
+
+public class GrayScaleImage {
+
+	public static void main(String[] args) {
+
+	}
+
+}
